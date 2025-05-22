@@ -24,6 +24,17 @@ const AddTask = () => {
         };
         console.log('Submitted Task:', task);
         // Submit to backend here
+        fetch('http://localhost:3000/task', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(task),
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+            })
     };
 
     return (
