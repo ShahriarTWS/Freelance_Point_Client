@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { useNavigate } from 'react-router';
 import { AuthContext } from '../../provider/AuthProvider';
+import Swal from 'sweetalert2';
 
 const MyPostedTasks = () => {
     const { user, loading } = useContext(AuthContext);
@@ -17,21 +18,9 @@ const MyPostedTasks = () => {
     }, [user]);
 
     const handleDelete = async (id) => {
-        if (!window.confirm('Are you sure you want to delete this task?')) return;
-
-        try {
-            const res = await fetch(`http://localhost:3000/task/${id}`, {
-                method: 'DELETE',
-            });
-            if (res.ok) {
-                setTasks(tasks.filter(task => task._id !== id));
-            } else {
-                alert('Failed to delete task');
-            }
-        } catch (error) {
-            alert('Error deleting task');
-        }
+       
     };
+
 
     const handleUpdate = (id) => {
         navigate(`/task/update/${id}`);

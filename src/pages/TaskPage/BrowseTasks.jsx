@@ -7,6 +7,8 @@ const BrowseTasks = () => {
     const [tasks, setTasks] = useState([]);
     const { loading, setLoading } = use(AuthContext);
 
+
+
     useEffect(() => {
         setLoading(true);
         fetch('http://localhost:3000/task')
