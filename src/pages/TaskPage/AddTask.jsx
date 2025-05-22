@@ -13,17 +13,22 @@ const AddTask = () => {
     const handleAddTask = (e) => {
         e.preventDefault();
         const form = e.target;
+
+        const rawDeadline = form.deadline.value;
+        const deadline = new Date(rawDeadline).toISOString(); // Ensure proper format
+
         const task = {
             title: form.title.value,
             category: form.category.value,
             description: form.description.value,
-            deadline: form.deadline.value,
+            deadline: deadline, // Use ISO string
             budget: form.budget.value,
             email: user.email,
             name: user.displayName
         };
+
         console.log('Submitted Task:', task);
-        // Submit to backend here
+
         fetch('http://localhost:3000/task', {
             method: 'POST',
             headers: {
@@ -34,7 +39,7 @@ const AddTask = () => {
             .then(res => res.json())
             .then(data => {
                 console.log(data);
-            })
+            });
     };
 
     return (
@@ -71,7 +76,14 @@ const AddTask = () => {
                 <div className="flex flex-col md:flex-row gap-5">
                     <div className="flex-1">
                         <label className="label font-semibold">Deadline</label>
-                        <input type="date" name="deadline" className="input input-bordered w-full" required />
+                        <input
+                            type="date"
+                            name="deadline"
+                            className="input input-bordered w-full"
+                            required
+                            min={new Date().toISOString().split('T')[0]}
+                        />
+
                     </div>
                     <div className="flex-1">
                         <label className="label font-semibold">Budget ($)</label>

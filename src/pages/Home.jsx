@@ -1,9 +1,24 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from '../components/Header/Header';
 import Banner from '../components/Banner/Banner';
 import Footer from '../components/Footer/Footer';
+import { Outlet } from 'react-router';
 
 const Home = () => {
+
+    const [data, setData] = useState([]);
+
+    useEffect(() => {
+        fetch('http://localhost:3000/task')
+            .then(res => res.json())
+            .then(fetchedData => {
+                setData(fetchedData)
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    }, [])
+
     return (
         <div>
             <header className='relative'>
@@ -13,7 +28,8 @@ const Home = () => {
                 <Banner></Banner>
             </header>
             <main>
-
+                
+                <Outlet context={data}></Outlet>
             </main>
             <footer>
                 <Footer></Footer>

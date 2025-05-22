@@ -5,11 +5,22 @@ import Login from "../pages/Authentication/Login";
 import SignUp from "../pages/Authentication/SignUp";
 import TaskPage from "../pages/TaskPage/TaskPage";
 import AddTask from "../pages/TaskPage/AddTask";
+import Loading from "../pages/Loading";
+import FeaturedTasks from "../components/FeaturedTasks";
 
 export const router = createBrowserRouter([
     {
         path: '/',
-        element: <Home></Home>
+        element: <Home></Home>,
+        loader: () => fetch('http://localhost:3000/task'),
+        hydrateFallbackElement: <Loading></Loading>,
+        children: [
+            {
+                path: '/',
+                element: <FeaturedTasks></FeaturedTasks>,
+
+            }
+        ]
     },
     {
         path: '/auth',
@@ -28,11 +39,11 @@ export const router = createBrowserRouter([
     {
         path: '/task',
         element: <TaskPage></TaskPage>,
-        children:([
-           {
-            path: '/task/addTask',
-            element: <AddTask></AddTask>
-           }
+        children: ([
+            {
+                path: '/task/addTask',
+                element: <AddTask></AddTask>
+            }
         ])
     }
 ])
