@@ -25,7 +25,7 @@ export const navLinks = (
         </li>
         <li>
             <NavLink
-                to="/browseTask"
+                to="/task/browse-tasks"
                 className={({ isActive }) =>
                     isActive ? "bg-base-100 text-black font-semibold underline underline-offset-2" : ""}
             >
@@ -34,7 +34,7 @@ export const navLinks = (
         </li>
         <li>
             <NavLink
-                to="/myPostedTask"
+                to="/task/my-posted-task"
                 className={({ isActive }) =>
                     isActive ? "bg-base-100 text-black font-semibold underline underline-offset-2" : ""}
             >
@@ -49,7 +49,7 @@ const Navbar = () => {
     const { theme, setTheme } = use(AuthContext);
 
     const { user, logOut } = use(AuthContext);
-    // console.log(user?.photoURL);
+    console.log(user?.photoURL);
 
     const handleLogout = () => {
         logOut();
@@ -78,7 +78,7 @@ const Navbar = () => {
                             {navLinks}
                         </ul>
                     </div>
-                    <NavLink to="/" className="text-base-200 font-semibold text-2xl md:text-3xl">FreelancePoint</NavLink>
+                    <NavLink to="/" className="text-base-200 font-semibold text-sm md:text-3xl">FreelancePoint</NavLink>
                 </div>
 
                 {/* Navbar Center */}
@@ -97,61 +97,36 @@ const Navbar = () => {
                                     <img src={user.photoURL} alt="User" />
                                 </div>
                             </div>
-                            <ul
-                                tabIndex={0}
-                                className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
-                            >
+                            <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-white rounded-box w-52">
                                 <li className="font-semibold text-center">{user.displayName}</li>
                                 <li>
-                                    <button onClick={handleLogout} className="btn btn-sm btn-error text-white mt-1">
-                                        Logout
-                                    </button>
+                                    <button onClick={handleLogout} className="btn btn-sm btn-error text-white mt-1">Logout</button>
                                 </li>
                             </ul>
                         </div>
                     ) : (
-                        <div className="flex gap-2 font-medium text-secondary dark:text-white">
-                            <li className="btn">
-                                <NavLink to="/auth/login">Login</NavLink>
-                            </li>
-                            <li className="btn">
-                                <NavLink to="/auth/signup">Sign Up</NavLink>
-                            </li>
+                        <div className="flex gap-2 font-medium">
+                            <NavLink to="/auth/login" className="btn btn-sm">Login</NavLink>
+                            <NavLink to="/auth/signup" className="btn btn-sm">Sign Up</NavLink>
                         </div>
                     )}
 
                     <button
                         onClick={() => setTheme(theme === "customlight" ? "customdark" : "customlight")}
-                        className="btn btn-sm">
-                        {theme === "customlight" ?
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width="20"
-                                height="20"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                strokeWidth="2"
-                                strokeLinecap="round"
-                                strokeLinejoin="round">
-                                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                        className="btn btn-sm"
+                    >
+                        {theme === "customlight" ? (
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none"
+                                stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
                             </svg>
-
-                            :
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width="20"
-                                height="20"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                strokeWidth="2"
-                                strokeLinecap="round"
-                                strokeLinejoin="round">
+                        ) : (
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none"
+                                stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                                 <circle cx="12" cy="12" r="5" />
-                                <path
-                                    d="M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4" />
-                            </svg>}
+                                <path d="M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4" />
+                            </svg>
+                        )}
                     </button>
                 </div>
             </div>

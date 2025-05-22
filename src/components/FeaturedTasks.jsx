@@ -8,7 +8,7 @@ const FeaturedTasks = () => {
     console.log(data);
 
     const [tasks, setTasks] = useState([]);
-    const { loading, setLoading,theme } = use(AuthContext);
+    const { loading, setLoading, theme } = use(AuthContext);
 
     useEffect(() => {
         fetch('http://localhost:3000/task')
@@ -22,8 +22,8 @@ const FeaturedTasks = () => {
     if (loading) return <Loading></Loading>;
 
     return (
-       <section className={`py-10 ${theme === 'customlight' ? 'bg-base-200 text-neutral' : 'bg-gray-900 '}`}>
-            <div className="w-10/12 mx-auto px-5">
+        <section className={`py-10 ${theme === 'customlight' ? 'bg-base-200 text-neutral' : 'bg-gray-900 '}`}>
+            <div className="w-10/12 mx-auto md:px-5">
                 <h2 className="text-4xl font-bold text-primary mb-10">
                     Featured Tasks
                 </h2>
@@ -38,9 +38,9 @@ const FeaturedTasks = () => {
                                 <h3 className="text-2xl font-semibold  mb-4"><span>{task.title}</span></h3>
                                 <p className="text-base mb-4 flex justify-between"><span>Category:</span> <span>${task.category}</span></p>
                                 <p className="text-base mb-4 flex justify-between"><span>Budget:</span> <span>${task.budget}</span></p>
-                                <p className="text-base mb-4 flex justify-between"><span>Deadline:</span> <span>{new Date(task.deadline).toLocaleDateString()}</span></p>
+                                <p className="text-base mb-4 flex justify-between"><span>Deadline:</span> <span>{new Date(task.deadline).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' })}</span></p>
                                 <p className="text-xs text-gray-500 mb-4">Posted by {task.name}</p>
-                                <Link to={`/taskDetails/${task._id}`} className='btn btn-block btn-primary'>View Details</Link>
+                                <Link to={`/task/taskDetails/${task._id}`} className='btn btn-block btn-primary'>View Details</Link>
                             </div>
                         ))
                     }
