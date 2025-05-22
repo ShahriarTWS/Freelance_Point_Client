@@ -1,20 +1,58 @@
-import React, { useEffect, useState } from 'react';
+import React, { use, useEffect, useState } from 'react';
 import { NavLink } from 'react-router';
+import { AuthContext } from '../../provider/AuthProvider';
 
 
 export const navLinks = (
     <>
-        <li><NavLink to="/">Home</NavLink></li>
-        <li><NavLink to="/addTask">Add Task</NavLink></li>
-        <li><NavLink to="/browseTask">Browse Task</NavLink></li>
-        <li><NavLink to="/myPostedTask">My Posted Task</NavLink></li>
+        <li>
+            <NavLink
+                to="/"
+                className={({ isActive }) =>
+                    isActive ? "bg-base-100 text-black font-semibold underline underline-offset-2" : ""}
+            >
+                Home
+            </NavLink>
+        </li>
+        <li>
+            <NavLink
+                to="/addTask"
+                className={({ isActive }) =>
+                    isActive ? "bg-base-100 text-black font-semibold underline underline-offset-2" : ""}
+            >
+                Add Task
+            </NavLink>
+        </li>
+        <li>
+            <NavLink
+                to="/browseTask"
+                className={({ isActive }) =>
+                    isActive ? "bg-base-100 text-black font-semibold underline underline-offset-2" : ""}
+            >
+                Browse Task
+            </NavLink>
+        </li>
+        <li>
+            <NavLink
+                to="/myPostedTask"
+                className={({ isActive }) =>
+                    isActive ? "bg-base-100 text-black font-semibold underline underline-offset-2" : ""}
+            >
+                My Posted Task
+            </NavLink>
+        </li>
     </>
 );
 
 const Navbar = () => {
-    const [theme, setTheme] = useState("light");
 
-    const user = true;
+    const { theme, setTheme } = use(AuthContext);
+
+    const { user } = use(AuthContext);
+
+    const handleLogout = () => {
+
+    }
 
     useEffect(() => {
         document.documentElement.setAttribute("data-theme", theme);
@@ -52,23 +90,39 @@ const Navbar = () => {
                 {/* Navbar End */}
                 <div className="navbar-end flex items-center gap-4">
                     {user ? (
-                        <div className="avatar tooltip tooltip-bottom" data-tip="Your Profile">
-                            <div className="w-10 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                                <img src="https://media.licdn.com/dms/image/v2/D4E03AQH65g40qjWCKA/profile-displayphoto-shrink_800_800/B4EZa0FNkJHoBc-/0/1746777987948?e=1753315200&v=beta&t=1mAfi1me6acQbobth_HB3oLgztFq704MvB9_yzo0hNI" alt="User" />
+                        <div className="dropdown dropdown-end">
+                            <div tabIndex={0} role="button" className="avatar btn btn-ghost btn-circle">
+                                <div className="w-10 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                                    <img src={user.photoURL} alt="User" />
+                                </div>
                             </div>
+                            <ul
+                                tabIndex={0}
+                                className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
+                            >
+                                <li className="font-semibold text-center">{user.displayName}</li>
+                                <li>
+                                    <button onClick={handleLogout} className="btn btn-sm btn-error text-white mt-1">
+                                        Logout
+                                    </button>
+                                </li>
+                            </ul>
                         </div>
                     ) : (
                         <div className="flex gap-2 font-medium text-secondary dark:text-white">
-                            <li className='btn'><NavLink to="/login">Login</NavLink></li>
-                            <li className='btn'><NavLink to="/signup">Sign Up</NavLink></li>
+                            <li className="btn">
+                                <NavLink to="/auth/login">Login</NavLink>
+                            </li>
+                            <li className="btn">
+                                <NavLink to="/auth/signup">Sign Up</NavLink>
+                            </li>
                         </div>
-
                     )}
 
                     <button
-                        onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+                        onClick={() => setTheme(theme === "customlight" ? "customdark" : "customlight")}
                         className="btn btn-sm">
-                        {theme === "light" ?
+                        {theme === "customlight" ?
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 width="20"

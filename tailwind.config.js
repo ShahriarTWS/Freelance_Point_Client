@@ -34,20 +34,20 @@ module.exports = {
             },
             {
                 customdark: {
-                    "primary": "#FDCB6E",
-                    "secondary": "#55efc4",
-                    "accent": "#ffeaa7",
-                    "neutral": "#dfe6e9",
-                    "base-100": "#2d3436",
-                    "base-200": "#636e72",
-                    "info": "#74b9ff",
-                    "success": "#00cec9",
-                    "warning": "#fab1a0",
-                    "error": "#ff7675",
+                    "primary": "#8e44ad",      // Deep purple
+                    "secondary": "#3498db",    // Calming blue
+                    "accent": "#e84393",       // Brighter pink
+                    "neutral": "#1e272e",       // Dark neutral background
+                    "base-100": "#121212",      // Main dark background
+                    "base-200": "#1e1e1e",      // Slightly lighter dark
+                    "info": "#00cec9",          // Soft teal
+                    "success": "#2ecc71",       // Clean green
+                    "warning": "#f39c12",       // Sharp amber
+                    "error": "#e74c3c",         // Vivid red
                 },
             },
         ],
-        darkTheme: "customdark",      // Used in your <html data-theme="customdark">
-        defaultTheme: "customlight",  // Default light theme
+        darkTheme: "customdark",
+        defaultTheme: "customlight",
     },
-}
+};
