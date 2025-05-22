@@ -16,7 +16,7 @@ export const navLinks = (
         </li>
         <li>
             <NavLink
-                to="/addTask"
+                to="/task/addTask"
                 className={({ isActive }) =>
                     isActive ? "bg-base-100 text-black font-semibold underline underline-offset-2" : ""}
             >
@@ -48,10 +48,11 @@ const Navbar = () => {
 
     const { theme, setTheme } = use(AuthContext);
 
-    const { user } = use(AuthContext);
+    const { user, logOut } = use(AuthContext);
+    // console.log(user?.photoURL);
 
     const handleLogout = () => {
-
+        logOut();
     }
 
     useEffect(() => {
