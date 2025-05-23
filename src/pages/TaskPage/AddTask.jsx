@@ -1,11 +1,11 @@
-import React, { useContext } from 'react';
+import React, { use, useContext } from 'react';
 import { AuthContext } from '../../provider/AuthProvider';
 import Loading from '../Loading';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router';
 
 const AddTask = () => {
-    const { user } = useContext(AuthContext);
+    const { user } = use(AuthContext);
     const navigate = useNavigate();
     // Optional: Loading fallback if needed
     if (!user) {
@@ -26,10 +26,11 @@ const AddTask = () => {
             deadline: deadline, // Use ISO string
             budget: form.budget.value,
             email: user.email,
-            name: user.displayName
+            name: user.displayName,
+            photoURL: user.photoURL,
         };
 
-        // console.log('Submitted Task:', task);
+        console.log('Submitted Task:', task);
         fetch('http://localhost:3000/task', {
             method: 'POST',
             headers: {
@@ -47,7 +48,7 @@ const AddTask = () => {
                         timer: 1500
                     }).then(() => {
                         // Navigate to "My Posted Task" page
-                        navigate('/task/browse-tasks')
+                        navigate('/task/my-posted-task')
                     });
                 } else {
                     Swal.fire({
