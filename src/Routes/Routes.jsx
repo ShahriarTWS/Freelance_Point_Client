@@ -11,6 +11,7 @@ import TaskDetails from "../pages/TaskPage/TaskDetails";
 import PrivateRoute from "../provider/PrivateRoute";
 import MyPostedTasks from "../pages/TaskPage/MyPostedTasks";
 import BrowseTasks from "../pages/TaskPage/BrowseTasks";
+import ErrorPage from "../pages/ErrorPage";
 
 export const router = createBrowserRouter([
     {
@@ -69,5 +70,9 @@ export const router = createBrowserRouter([
                 element: <BrowseTasks></BrowseTasks>
             }
         ])
+    },
+    {
+        path: '/*',
+        element: <ErrorPage></ErrorPage>
     }
 ])
