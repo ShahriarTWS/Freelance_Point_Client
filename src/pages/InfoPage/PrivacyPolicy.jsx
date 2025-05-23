@@ -12,7 +12,7 @@ const PrivacyPolicy = () => {
                     {
                         title: '1. Introduction',
                         content:
-                            'At Freelancer Point, we are committed to protecting your personal information and your right to privacy. This Privacy Policy outlines how we collect, use, and safeguard your data when you use our platform.',
+                            'At Freelance Point, we are committed to protecting your personal information and your right to privacy. This Privacy Policy outlines how we collect, use, and safeguard your data when you use our platform.',
                     },
                     {
                         title: '2. Information We Collect',
@@ -63,7 +63,7 @@ const PrivacyPolicy = () => {
                     {
                         title: '8. Children\'s Privacy',
                         content:
-                            'Freelancer Point is not intended for users under the age of 18. We do not knowingly collect data from minors.',
+                            'Freelance Point is not intended for users under the age of 18. We do not knowingly collect data from minors.',
                     },
                     {
                         title: '9. Changes to This Policy',
@@ -75,8 +75,8 @@ const PrivacyPolicy = () => {
                         content: (
                             <p className="flex items-center gap-2">
                                 <FaEnvelope className="text-blue-600" />
-                                <a href="mailto:support@freelancerpoint.com" className="text-blue-500 hover:underline">
-                                    support@freelancerpoint.com
+                                <a href="mailto:support@freelancepoint.com" className="text-blue-500 hover:underline">
+                                    support@freelancepoint.com
                                 </a>
                             </p>
                         ),
@@ -89,7 +89,7 @@ const PrivacyPolicy = () => {
                 ))}
 
                 <p className="text-center text-sm text-gray-400 mt-12 pt-8 border-t border-gray-200">
-                    © {new Date().getFullYear()} Freelancer Point. All rights reserved.
+                    © {new Date().getFullYear()} Freelance Point. All rights reserved.
                 </p>
             </div>
         </div>
