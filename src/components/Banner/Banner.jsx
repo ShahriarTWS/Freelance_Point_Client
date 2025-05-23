@@ -32,7 +32,7 @@ const Banner = () => {
     ];
 
     return (
-        <div className='bg-gradient-to-b from-blue-400 to-indigo-500 h-full'>
+        <div className='bg-gradient-to-b from-blue-400 to-indigo-500 h-[90vh]'>
             <Swiper
                 modules={[ Pagination, Navigation]}
                 autoplay={{ delay: 5000, disableOnInteraction: false }}
@@ -43,7 +43,7 @@ const Banner = () => {
             >
                 {slides.map((slide, index) => (
                     <SwiperSlide key={index}>
-                        <div className='md:flex md:h-[90vh] justify-between w-10/12 mx-auto items-center py-2 md:py-8'>
+                        <div className='md:flex  md:h-[90vh] justify-between w-10/12 mx-auto items-center py-2 md:py-8'>
                             <div className='flex-1 pt-8 md:pt-0 md:text-start'>
                                 <h2 className='text-white font-medium text-4xl md:text-7xl md:w-4/5'>
                                     {slide.title.includes('Freelancers') ? (
@@ -52,7 +52,7 @@ const Banner = () => {
                                         slide.title
                                     )}
                                 </h2>
-                                <p className='py-8 text-base md:text-2xl text-white'>{
+                                <p className='py-4 min-h-32 text-base md:text-2xl text-white'>{
                                     <Typewriter
                                         cursor
                                         cursorBlinking
@@ -64,11 +64,13 @@ const Banner = () => {
                                         words={[slide.description]}
                                     />
                                 }</p>
-                                <button className="btn btn-primary text-base font-medium py-4 px-6 md:py-6 md:px-12 hover:bg-neutral">
+                                <p className='text-center md:text-start'>
+                                    <button className="btn  btn-primary text-base font-medium my-6  py-4 px-6 md:py-6 md:px-12 hover:bg-neutral">
                                     {slide.buttonText}
                                 </button>
+                                </p>
                             </div>
-                            <div className='flex-1 h-full flex justify-end items-center'>
+                            <div className='flex-1 h-full flex md:justify-end items-center'>
                                 <img className="h-full object-contain" src={slide.image} alt="" />
                             </div>
                         </div>

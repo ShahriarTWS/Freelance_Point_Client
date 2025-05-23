@@ -54,16 +54,34 @@ const Navbar = () => {
 
     const { theme, setTheme } = use(AuthContext);
 
-    const { user, logOut } = use(AuthContext);
+    const { user, logOut, setUser } = use(AuthContext);
+    const [dbuser,setDbUser]= useState([]);
     // console.log(user?.photoURL);
 
     const handleLogout = () => {
         logOut();
     }
 
-    useEffect(() => {
+        useEffect(() => {
         document.documentElement.setAttribute("data-theme", theme);
     }, [theme]);
+
+useEffect(() => {
+    if (!user) return;
+
+    fetch('http://localhost:3000/users')
+        .then(res => res.json())
+        .then(users => {
+            const matchedUser = users.find(u => u.email === user.email);
+            if (matchedUser) {
+                setDbUser(matchedUser);
+            }
+        })
+        .catch(err => console.error("Error fetching users:", err));
+}, [user]);
+
+
+
 
 
 
@@ -103,10 +121,10 @@ const Navbar = () => {
                                     <img src={user.photoURL} alt="User" />
                                 </div>
                             </div>
-                            <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-white rounded-box w-52">
+                            <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-200 rounded-box w-52">
                                 <li className="font-semibold text-center">{user.displayName}</li>
                                 <li>
-                                    <button onClick={handleLogout} className="btn btn-sm btn-error text-white mt-1">Logout</button>
+                                    <button onClick={handleLogout} className="btn btn-sm btn-error  mt-1">Logout</button>
                                 </li>
                             </ul>
                         </div>

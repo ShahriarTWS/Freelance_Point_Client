@@ -9,7 +9,15 @@ const auth = getAuth(app);
 
 const AuthProvider = ({ children }) => {
 
-    const [theme, setTheme] = useState("light");
+    const [theme, setTheme] = useState(() => {
+        return localStorage.getItem("theme") || "light";
+    });
+
+    useEffect(() => {
+        localStorage.setItem("theme", theme);
+        document.documentElement.setAttribute("data-theme", theme);
+    }, [theme]);
+
 
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);

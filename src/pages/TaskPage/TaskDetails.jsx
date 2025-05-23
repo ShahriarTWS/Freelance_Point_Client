@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState, useContext } from 'react';
 import { Link, useParams } from 'react-router';
 import { AuthContext } from '../../provider/AuthProvider';
@@ -6,15 +5,18 @@ import { AuthContext } from '../../provider/AuthProvider';
 const TaskDetails = () => {
     const { id } = useParams();
     const [task, setTask] = useState(null);
-    // const [postedTaskUser, setPostedTaskUser] = useState(null);
+    const [bidsCount, setBidsCount] = useState(0);
     const { user } = useContext(AuthContext);
 
     useEffect(() => {
         fetch(`http://localhost:3000/task/${id}`)
             .then(res => res.json())
             .then(data => setTask(data));
-    }, [id]);
 
+        fetch(`http://localhost:3000/bids/count/${id}`)
+            .then(res => res.json())
+            .then(data => setBidsCount(data.count));
+    }, [id]);
 
     const handlePlaceBid = () => {
         if (!user) {
@@ -24,9 +26,7 @@ const TaskDetails = () => {
 
         fetch('http://localhost:3000/bids', {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
                 taskId: task._id,
                 taskName: task.title,
@@ -40,6 +40,7 @@ const TaskDetails = () => {
             .then(res => res.json())
             .then(() => {
                 alert("✅ Bid placed successfully!");
+                setBidsCount(prev => prev + 1); // increment count on UI
             })
             .catch(() => {
                 alert("❌ Failed to place bid.");
@@ -56,19 +57,22 @@ const TaskDetails = () => {
 
     return (
         <div className="max-w-6xl mx-auto px-4 py-16">
-            <div className="bg-white dark:bg-gray-700 rounded-2xl shadow-lg overflow-hidden md:flex">
+            <p className="text-lg font-semibold text-green-700 mb-6">
+                You bid for {bidsCount} opportunities.
+            </p>
 
+            <div className=" bg-base-200  rounded-2xl shadow-lg overflow-hidden md:flex">
                 <div className="md:flex-1 p-8 space-y-6">
-                    <h1 className="text-4xl font-extrabold text-indigo-700">{task.title}</h1>
+                    <h1 className="text-4xl font-extrabold ">{task.title}</h1>
 
                     <div>
-                        <h3 className="text-xl font-semibold text-gray-700 mb-1">Category</h3>
-                        <p className="text-gray-600">{task.category}</p>
+                        <h3 className="text-xl font-semibold  mb-1">Category</h3>
+                        <p className="">{task.category}</p>
                     </div>
 
                     <div>
-                        <h3 className="text-xl font-semibold text-gray-700 mb-1">Description</h3>
-                        <p className="text-gray-600 whitespace-pre-line leading-relaxed">{task.description}</p>
+                        <h3 className="text-xl font-semibold  mb-1">Description</h3>
+                        <p className=" whitespace-pre-line leading-relaxed">{task.description}</p>
                     </div>
 
                     <div className="mt-6 italic text-sm text-gray-500 flex items-center space-x-6">
@@ -98,31 +102,26 @@ const TaskDetails = () => {
                         </div>
                     </div>
 
-                    {/* <button
-                        className="mt-10 w-full bg-indigo-700 hover:bg-indigo-800 text-white font-semibold py-3 rounded-lg transition"
-                        onClick={handlePlaceBid}
-                    >
-                        Place Bid
-                    </button> */}
-
                     {
-                        user.email == task.email ? <div>
-                            <p>The bid posted by you</p>
-                            <Link to={'/task/my-posted-task'}>
-                                <button
-                                    className="mt-10 w-full bg-indigo-700 hover:bg-indigo-800 text-white font-semibold py-3 rounded-lg transition"
-                                >
-                                    See my posted task
-                                </button>
-                            </Link>
-                        </div>
-                            :
+                        user.email === task.email ? (
+                            <div>
+                                <p className=" mt-2 text-red-500">This task was posted by you.</p>
+                                <Link to={'/task/my-posted-task'}>
+                                    <button
+                                        className="mt-6 w-full bg-indigo-700 hover:bg-indigo-800 text-white font-semibold py-3 rounded-lg transition"
+                                    >
+                                        See my posted task
+                                    </button>
+                                </Link>
+                            </div>
+                        ) : (
                             <button
-                                className="mt-10 w-full bg-indigo-700 hover:bg-indigo-800 text-white font-semibold py-3 rounded-lg transition"
+                                className="mt-6 w-full bg-indigo-700 hover:bg-indigo-800 text-white font-semibold py-3 rounded-lg transition"
                                 onClick={handlePlaceBid}
                             >
                                 Place Bid
                             </button>
+                        )
                     }
                 </div>
             </div>

@@ -261,12 +261,12 @@ const MyPostedTasks = () => {
                     {/* Mobile View */}
                     <div className="grid grid-cols-1 gap-4 md:hidden">
                         {tasks.map(task => (
-                            <div key={task._id} className="border rounded-lg p-4 bg-white shadow">
+                            <div key={task._id} className="border rounded-lg p-4  shadow">
                                 <h2 className="text-xl font-semibold mb-2">{task.title}</h2>
-                                <p className="text-sm text-gray-600 mb-1"><strong>Category:</strong> {task.category}</p>
-                                <p className="text-sm text-gray-600 mb-1"><strong>Deadline:</strong> {new Date(task.deadline).toLocaleDateString()}</p>
-                                <p className="text-sm text-gray-600 mb-1"><strong>Budget:</strong> ${task.budget}</p>
-                                <p className="text-sm text-gray-600 mb-4"><strong>Bids:</strong> {task.bidCount ?? 0}</p>
+                                <p className="text-sm  mb-1"><strong>Category:</strong> {task.category}</p>
+                                <p className="text-sm  mb-1"><strong>Deadline:</strong> {new Date(task.deadline).toLocaleDateString()}</p>
+                                <p className="text-sm  mb-1"><strong>Budget:</strong> ${task.budget}</p>
+                                <p className="text-sm  mb-4"><strong>Bids:</strong> {task.bidCount ?? 0}</p>
                                 <div className="flex flex-wrap gap-2">
                                     <button onClick={() => handleUpdate(task._id)} className="bg-blue-500 text-white px-4 py-1 rounded hover:bg-blue-600">Update</button>
                                     <button onClick={() => handleDelete(task._id)} className="bg-red-500 text-white px-4 py-1 rounded hover:bg-red-600">Delete</button>
@@ -278,9 +278,9 @@ const MyPostedTasks = () => {
 
                     {/* Desktop View */}
                     <div className="hidden md:block overflow-x-auto border rounded-lg shadow">
-                        <table className="min-w-full bg-white text-sm">
+                        <table className="min-w-full  text-sm">
                             <thead>
-                                <tr className="bg-gray-100 text-left">
+                                <tr className="bg-base-100 text-left">
                                     <th className="py-3 px-4">Title</th>
                                     <th className="py-3 px-4">Category</th>
                                     <th className="py-3 px-4">Deadline</th>
@@ -291,12 +291,12 @@ const MyPostedTasks = () => {
                             </thead>
                             <tbody>
                                 {tasks.map(task => (
-                                    <tr key={task._id} className="border-t hover:bg-gray-50 transition">
+                                    <tr key={task._id} className="border-t hover:bg-base-300 transition">
                                         <td className="py-3 px-4">{task.title}</td>
                                         <td className="py-3 px-4">{task.category}</td>
                                         <td className="py-3 px-4">{new Date(task.deadline).toLocaleDateString()}</td>
                                         <td className="py-3 px-4">${task.budget}</td>
-                                        <td className="py-3 px-4 font-semibold text-indigo-700">{task.bidCount ?? 0}</td>
+                                        <td className="py-3 px-4 font-semibold ">{task.bidCount ?? 0}</td>
                                         <td className="py-3 px-4 text-center space-x-2">
                                             <button onClick={() => handleUpdate(task._id)} className="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600">Update</button>
                                             <button onClick={() => handleDelete(task._id)} className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600">Delete</button>

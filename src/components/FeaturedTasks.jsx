@@ -22,18 +22,18 @@ const FeaturedTasks = () => {
     if (loading) return <Loading></Loading>;
 
     return (
-        <section className={`py-10 ${theme === 'light' ? 'bg-base-200 text-neutral' : 'bg-gray-900 '}`}>
+        <section className={`py-10`}>
             <div className="w-10/12 mx-auto md:px-5">
-                <h2 className="text-4xl font-bold text-primary mb-10">
+                <h2 className="text-4xl font-bold mb-10">
                     Featured Tasks
                 </h2>
-                <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 ">
                     {tasks
                         .slice(0, 6)  // show only first 6 tasks
                         .map(task => (
                             <div
                                 key={task._id}
-                                className="bg-white rounded-2xl shadow-md p-6 hover:shadow-xl transition "
+                                className="bg-base-200 rounded-2xl shadow-md p-6 hover:shadow-xl transition "
                             >
                                 <h3 className="text-2xl font-semibold  mb-4"><span>{task.title}</span></h3>
                                 <p className="text-base mb-4 flex justify-between"><span>Category:</span> <span>${task.category}</span></p>
