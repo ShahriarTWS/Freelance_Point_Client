@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { Link, useParams } from 'react-router';
 import { AuthContext } from '../../provider/AuthProvider';
+import Swal from 'sweetalert2';
 
 const TaskDetails = () => {
     const { id } = useParams();
@@ -20,7 +21,14 @@ const TaskDetails = () => {
 
     const handlePlaceBid = () => {
         if (!user) {
-            alert("Please log in to place a bid.");
+            Swal.fire({
+                icon: 'warning',
+                title: 'Please log in to place a bid.',
+                timer: 2000,   // auto close after 2 seconds
+                showConfirmButton: false,
+                timerProgressBar: true,
+                position: 'top',
+            });
             return;
         }
 
@@ -39,11 +47,25 @@ const TaskDetails = () => {
         })
             .then(res => res.json())
             .then(() => {
-                alert("✅ Bid placed successfully!");
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Bid placed successfully!',
+                    timer: 2000,
+                    showConfirmButton: false,
+                    timerProgressBar: true,
+                    position: 'top',
+                });
                 setBidsCount(prev => prev + 1); // increment count on UI
             })
             .catch(() => {
-                alert("❌ Failed to place bid.");
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Failed to place bid.',
+                    timer: 2000,
+                    showConfirmButton: false,
+                    timerProgressBar: true,
+                    position: 'top',
+                });
             });
     };
 

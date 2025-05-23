@@ -40,11 +40,12 @@ const Banner = () => {
     return (
         <div className='bg-gradient-to-b from-blue-400 to-indigo-500 h-[90vh]'>
             <Swiper
-                modules={[Pagination, Navigation]}
-                autoplay={{ delay: 5000, disableOnInteraction: false }}
+                modules={[Autoplay,Pagination, Navigation]}
+                
+                autoplay={{ delay: 15000, disableOnInteraction: false }}
                 pagination={{ clickable: true }}
                 navigation
-                loop
+                loop={true}
                 speed={1000}
             >
                 {slides.map((slide, index) => (

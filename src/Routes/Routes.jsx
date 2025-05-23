@@ -12,6 +12,10 @@ import PrivateRoute from "../provider/PrivateRoute";
 import MyPostedTasks from "../pages/TaskPage/MyPostedTasks";
 import BrowseTasks from "../pages/TaskPage/BrowseTasks";
 import ErrorPage from "../pages/ErrorPage";
+import InfoPage from "../pages/InfoPage/InfoPage";
+import TermsAndConditions from "../pages/InfoPage/TermsAndCondition";
+import PrivacyPolicy from "../pages/InfoPage/PrivacyPolicy";
+import About from "../pages/InfoPage/About";
 
 export const router = createBrowserRouter([
     {
@@ -68,6 +72,24 @@ export const router = createBrowserRouter([
             {
                 path: '/task/browse-tasks',
                 element: <BrowseTasks></BrowseTasks>
+            }
+        ])
+    },
+    {
+        path: '/info',
+        element: <InfoPage></InfoPage>,
+        children: ([
+            {
+                path: '/info/terms&condition',
+                element: <TermsAndConditions></TermsAndConditions>
+            },
+            {
+                path:'/info/privacy-policy',
+                element: <PrivacyPolicy></PrivacyPolicy>
+            },
+            {
+                path: '/info/about',
+                element: <About></About>
             }
         ])
     },

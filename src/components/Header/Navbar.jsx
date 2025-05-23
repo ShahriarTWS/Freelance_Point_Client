@@ -1,6 +1,7 @@
 import React, { use, useEffect, useState } from 'react';
-import { NavLink } from 'react-router';
+import { Link, NavLink } from 'react-router';
 import { AuthContext } from '../../provider/AuthProvider';
+import dummyImg from '../../assets/dummyUser.png'
 
 
 export const navLinks = (
@@ -9,11 +10,7 @@ export const navLinks = (
             <NavLink
                 to="/"
                 className={({ isActive }) =>
-                    `px-2 py-1 rounded 
-        ${isActive
-                        ? "bg-white   font-semibold underline underline-offset-2 text-black dark:text-white"
-                        : "text-muted dark:text-white hover:underline"}`
-                }
+                    isActive ? "bg-white  text-black font-semibold underline underline-offset-2" : ""}
             >
                 Home
             </NavLink>
@@ -50,9 +47,32 @@ export const navLinks = (
     </>
 );
 
+const conditionalLinks = <>
+    <li>
+        <NavLink
+            to="/auth/login"
+            className={({ isActive }) =>
+                isActive ? " bg-white  text-black font-semibold underline underline-offset-2" : ""}
+        >
+            Login
+        </NavLink>
+    </li>
+
+    <li>
+        <NavLink
+            to="/auth/signup"
+            className={({ isActive }) =>
+                isActive ? " bg-white  text-black font-semibold underline underline-offset-2" : ""}
+        >
+            Sign up
+        </NavLink>
+    </li>
+</>
+
+
 const Navbar = () => {
 
-    const { theme, setTheme } = use(AuthContext);
+    const { theme, setTheme, loading } = use(AuthContext);
 
     const { user, logOut } = use(AuthContext);
     // const [dbuser,setDbUser]= useState([]);
@@ -63,25 +83,25 @@ const Navbar = () => {
         logOut();
     }
 
-        useEffect(() => {
+    useEffect(() => {
         document.documentElement.setAttribute("data-theme", theme);
     }, [theme]);
 
-// useEffect(() => {
-//     if (!user) return;
+    // useEffect(() => {
+    //     if (!user) return;
 
-//     fetch('http://localhost:3000/users')
-//         .then(res => res.json())
-//         .then(users => {
-//             const matchedUser = users.find(u => u.email === user.email);
-//             if (matchedUser) {
-//                 setDbUser(matchedUser);
-//             }
-//         })
-//         .catch(err => console.error("Error fetching users:", err));
-// }, [user]);
+    //     fetch('http://localhost:3000/users')
+    //         .then(res => res.json())
+    //         .then(users => {
+    //             const matchedUser = users.find(u => u.email === user.email);
+    //             if (matchedUser) {
+    //                 setDbUser(matchedUser);
+    //             }
+    //         })
+    //         .catch(err => console.error("Error fetching users:", err));
+    // }, [user]);
 
-// console.log(dbuser);
+    // console.log(dbuser);
 
 
 
@@ -103,6 +123,7 @@ const Navbar = () => {
                         </div>
                         <ul className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-primary rounded-box w-52 text-base-200 text-base">
                             {navLinks}
+                            {user ? '' : <>{conditionalLinks}</>}
                         </ul>
                     </div>
                     <NavLink to="/" className="text-base-200 dark:text-white font-semibold text-sm md:text-3xl">FreelancePoint</NavLink>
@@ -117,25 +138,39 @@ const Navbar = () => {
 
                 {/* Navbar End */}
                 <div className="navbar-end flex items-center gap-4">
-                    {user ? (
-                        <div className="dropdown dropdown-end">
-                            <div tabIndex={0} role="button" className="avatar btn btn-ghost btn-circle">
-                                <div className="w-10 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                                    <img src={user?.photoURL} alt="User" />
+                    {loading ? (
+                        <p><span className="loading loading-bars loading-xl"></span></p>
+                    ) : (
+                        <>
+                            <div className="relative group">
+                                <div>
+                                    <div className="avatar cursor-pointer">
+                                        <div className="w-12 rounded-full">
+                                            <img src={user?.photoURL || dummyImg} alt="" />
+                                        </div>
+                                    </div>
+                                    <div className="absolute -translate-x-1/2 top-full mt-3 bg-primary text-white text-sm px-3 py-1 rounded shadow transition-opacity opacity-0 group-hover:opacity-100 whitespace-nowrap z-50">
+                                        <div className='text-lg mb-2'>
+                                            {user?.displayName || ''}
+                                        </div>
+                                        <div className='text-center'>
+                                            {
+                                                user && <Link to='/auth/login' onClick={handleLogout} className='btn'>Logout</Link>
+                                            }
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-200 rounded-box w-52">
-                                <li className="font-semibold text-center">{user.displayName}</li>
-                                <li>
-                                    <button onClick={handleLogout} className="btn btn-sm btn-error  mt-1">Logout</button>
-                                </li>
-                            </ul>
-                        </div>
-                    ) : (
-                        <div className="flex gap-2 font-medium">
-                            <NavLink to="/auth/login" className="btn btn-sm">Login</NavLink>
-                            <NavLink to="/auth/signup" className="btn btn-sm">Sign Up</NavLink>
-                        </div>
+
+                            {user ? (
+                                ''
+                            ) : (
+                                <div className='hidden md:flex gap-3'>
+                                    <Link to='/auth/login' className="btn btn-sm">Login</Link>
+                                    <Link to='/auth/signup' className="btn btn-sm">Sign up</Link>
+                                </div>
+                            )}
+                        </>
                     )}
 
                     <button
