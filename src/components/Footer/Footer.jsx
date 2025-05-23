@@ -31,7 +31,7 @@ const Footer = () => {
                     <a className="link link-hover">Advertisement</a>
                 </nav>
                 <nav>
-                    <ul className='text-black'>
+                    <ul className=' space-y-3'>
                         {navLinks}
                     </ul>
                 </nav>

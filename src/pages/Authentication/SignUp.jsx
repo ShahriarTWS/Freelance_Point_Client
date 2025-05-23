@@ -46,7 +46,9 @@ const SignUp = () => {
                             body: JSON.stringify(userProfile)
                         })
                             .then(res => res.json())
-                            .then(data => console.log(data));
+                            .then(data => {
+                                // console.log(data)
+                            });
 
                         navigate('/');
                     })
@@ -85,7 +87,9 @@ const SignUp = () => {
                     body: JSON.stringify(userProfile)
                 })
                     .then(res => res.json())
-                    .then(data => console.log("User saved to DB:", data))
+                    .then(data => {
+                        // console.log("User saved to DB:", data)
+                    })
                     .catch(err => console.error("Error saving to DB:", err));
 
                 Swal.fire({

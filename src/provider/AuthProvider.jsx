@@ -9,7 +9,7 @@ const auth = getAuth(app);
 
 const AuthProvider = ({ children }) => {
 
-    const [theme, setTheme] = useState("customlight");
+    const [theme, setTheme] = useState("light");
 
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);

@@ -1,37 +1,80 @@
-import React, { useEffect, useState, useContext } from 'react';
-import { useNavigate } from 'react-router';
+import React, { useEffect, useState, useContext, use } from 'react';
 import { AuthContext } from '../../provider/AuthProvider';
 import Swal from 'sweetalert2';
+import UpdateTaskModal from './UpdateTaskModal.jsx';
+import { useNavigate } from 'react-router';
+import Loading from '../Loading.jsx';
+
 
 const MyPostedTasks = () => {
-    const { user, loading } = useContext(AuthContext);
+    const { user, loading } = use(AuthContext);
     const [tasks, setTasks] = useState([]);
+    const [selectedTaskId, setSelectedTaskId] = useState(null);
+    const [isModalOpen, setIsModalOpen] = useState(false);
     const navigate = useNavigate();
 
     useEffect(() => {
+        refreshTasks();
+    }, [user]);
+
+    const refreshTasks = () => {
         if (user?.email) {
             fetch(`http://localhost:3000/tasks/mytasks?email=${user.email}`)
                 .then(res => res.json())
                 .then(data => setTasks(data))
                 .catch(err => console.error(err));
         }
-    }, [user]);
-
-    const handleDelete = async (id) => {
-       
     };
 
+    const handleDelete = async (id) => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`http://localhost:3000/task/${id}`, {
+                    method: 'DELETE'
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.deletedCount) {
+                            setTasks(prevTasks => prevTasks.filter(task => task._id !== id));
+                            Swal.fire("Deleted!", "Your task has been deleted.", "success");
+                        } else {
+                            Swal.fire("Error!", "Failed to delete task.", "error");
+                        }
+                    })
+                    .catch(() => {
+                        Swal.fire("Error!", "Something went wrong.", "error");
+                    });
+            }
+        });
+    };
 
     const handleUpdate = (id) => {
-        navigate(`/task/update/${id}`);
+        if (!user) {
+            Swal.fire("Unauthorized", "Please log in to update tasks", "warning");
+            return;
+        }
+        setSelectedTaskId(id);
+        setIsModalOpen(true);
     };
 
     const handleViewBids = (id) => {
-        navigate(`/task/bids/${id}`);
+        navigate(`/task/taskDetails/${id}`);
+    };
+
+    const closeUpdateModal = () => {
+        setIsModalOpen(false);
+        setSelectedTaskId(null);
     };
 
     if (loading) return <div className="text-center py-10 text-xl font-semibold">Loading...</div>;
-
     if (!user) return <div className="text-center py-10 text-lg text-red-600">Please log in to view your posted tasks.</div>;
 
     return (
@@ -39,10 +82,10 @@ const MyPostedTasks = () => {
             <h1 className="text-3xl font-bold mb-6 text-center md:text-left">My Posted Tasks</h1>
 
             {tasks.length === 0 ? (
-                <p className="text-center text-gray-600">You haven't posted any tasks yet.</p>
+                <Loading></Loading>
             ) : (
                 <>
-                    {/* Mobile view - Card layout */}
+                    {/* Mobile view */}
                     <div className="grid grid-cols-1 gap-4 md:hidden">
                         {tasks.map(task => (
                             <div key={task._id} className="border rounded-lg p-4 bg-white shadow">
@@ -65,7 +108,7 @@ const MyPostedTasks = () => {
                         ))}
                     </div>
 
-                    {/* Desktop view - Table layout */}
+                    {/* Desktop view */}
                     <div className="hidden md:block overflow-x-auto border rounded-lg shadow">
                         <table className="min-w-full bg-white text-sm">
                             <thead>
@@ -102,6 +145,15 @@ const MyPostedTasks = () => {
                     </div>
                 </>
             )}
+
+            {/* Update Modal */}
+            <UpdateTaskModal
+                isOpen={isModalOpen}
+                onClose={closeUpdateModal}
+                taskId={selectedTaskId}
+                user={user}
+                onUpdateSuccess={refreshTasks}
+            />
         </div>
     );
 };

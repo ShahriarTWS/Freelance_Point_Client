@@ -1,10 +1,12 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../provider/AuthProvider';
 import Loading from '../Loading';
+import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router';
 
 const AddTask = () => {
     const { user } = useContext(AuthContext);
-
+    const navigate = useNavigate();
     // Optional: Loading fallback if needed
     if (!user) {
         return <Loading></Loading>;
@@ -27,8 +29,7 @@ const AddTask = () => {
             name: user.displayName
         };
 
-        console.log('Submitted Task:', task);
-
+        // console.log('Submitted Task:', task);
         fetch('http://localhost:3000/task', {
             method: 'POST',
             headers: {
@@ -38,8 +39,32 @@ const AddTask = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+                if (data.insertedId || data.acknowledged) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Task Added Successfully',
+                        showConfirmButton: false,
+                        timer: 1500
+                    }).then(() => {
+                        // Navigate to "My Posted Task" page
+                        navigate('/task/browse-tasks')
+                    });
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Something went wrong while adding the task!',
+                    });
+                }
+            })
+            .catch(error => {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Failed to add task: ' + error.message,
+                });
             });
+
     };
 
     return (

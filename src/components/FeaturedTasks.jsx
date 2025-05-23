@@ -5,7 +5,7 @@ import Loading from '../pages/Loading';
 
 const FeaturedTasks = () => {
     const data = useOutletContext();
-    console.log(data);
+    // console.log(data);
 
     const [tasks, setTasks] = useState([]);
     const { loading, setLoading, theme } = use(AuthContext);
@@ -22,7 +22,7 @@ const FeaturedTasks = () => {
     if (loading) return <Loading></Loading>;
 
     return (
-        <section className={`py-10 ${theme === 'customlight' ? 'bg-base-200 text-neutral' : 'bg-gray-900 '}`}>
+        <section className={`py-10 ${theme === 'light' ? 'bg-base-200 text-neutral' : 'bg-gray-900 '}`}>
             <div className="w-10/12 mx-auto md:px-5">
                 <h2 className="text-4xl font-bold text-primary mb-10">
                     Featured Tasks

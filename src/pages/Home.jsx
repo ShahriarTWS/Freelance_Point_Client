@@ -15,7 +15,7 @@ const Home = () => {
                 setData(fetchedData)
             })
             .catch(err => {
-                console.log(err);
+                // console.log(err);
             })
     }, [])
 

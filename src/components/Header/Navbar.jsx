@@ -9,16 +9,22 @@ export const navLinks = (
             <NavLink
                 to="/"
                 className={({ isActive }) =>
-                    isActive ? "bg-base-100 text-black font-semibold underline underline-offset-2" : ""}
+                    `px-2 py-1 rounded 
+        ${isActive
+                        ? "bg-white   font-semibold underline underline-offset-2 text-black dark:text-white"
+                        : "text-muted dark:text-white hover:underline"}`
+                }
             >
                 Home
             </NavLink>
+
+
         </li>
         <li>
             <NavLink
                 to="/task/addTask"
                 className={({ isActive }) =>
-                    isActive ? "bg-base-100 text-black font-semibold underline underline-offset-2" : ""}
+                    isActive ? "bg-white  text-black font-semibold underline underline-offset-2" : ""}
             >
                 Add Task
             </NavLink>
@@ -27,7 +33,7 @@ export const navLinks = (
             <NavLink
                 to="/task/browse-tasks"
                 className={({ isActive }) =>
-                    isActive ? "bg-base-100 text-black font-semibold underline underline-offset-2" : ""}
+                    isActive ? "bg-white  text-black font-semibold underline underline-offset-2" : ""}
             >
                 Browse Task
             </NavLink>
@@ -36,7 +42,7 @@ export const navLinks = (
             <NavLink
                 to="/task/my-posted-task"
                 className={({ isActive }) =>
-                    isActive ? "bg-base-100 text-black font-semibold underline underline-offset-2" : ""}
+                    isActive ? " bg-white  text-black font-semibold underline underline-offset-2" : ""}
             >
                 My Posted Task
             </NavLink>
@@ -49,7 +55,7 @@ const Navbar = () => {
     const { theme, setTheme } = use(AuthContext);
 
     const { user, logOut } = use(AuthContext);
-    console.log(user?.photoURL);
+    // console.log(user?.photoURL);
 
     const handleLogout = () => {
         logOut();
@@ -78,12 +84,12 @@ const Navbar = () => {
                             {navLinks}
                         </ul>
                     </div>
-                    <NavLink to="/" className="text-base-200 font-semibold text-sm md:text-3xl">FreelancePoint</NavLink>
+                    <NavLink to="/" className="text-base-200 dark:text-white font-semibold text-sm md:text-3xl">FreelancePoint</NavLink>
                 </div>
 
                 {/* Navbar Center */}
                 <div className="navbar-center hidden lg:flex">
-                    <ul className="menu menu-horizontal px-1 text-base-200 text-base">
+                    <ul className="menu menu-horizontal px-1 text-base-200 text-base dark:text-white">
                         {navLinks}
                     </ul>
                 </div>
@@ -112,10 +118,10 @@ const Navbar = () => {
                     )}
 
                     <button
-                        onClick={() => setTheme(theme === "customlight" ? "customdark" : "customlight")}
+                        onClick={() => setTheme(theme === "light" ? "dark" : "light")}
                         className="btn btn-sm"
                     >
-                        {theme === "customlight" ? (
+                        {theme === "light" ? (
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none"
                                 stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                                 <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />

@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { use, useEffect, useState } from 'react';
 import { useParams } from 'react-router';
+import { AuthContext } from '../../provider/AuthProvider';
 
 const TaskDetails = () => {
     const { id } = useParams();
     const [task, setTask] = useState(null);
+    const { user } = use(AuthContext);
 
     useEffect(() => {
         fetch(`http://localhost:3000/task/${id}`)
@@ -19,9 +21,11 @@ const TaskDetails = () => {
         );
     }
 
+    console.log(task);
+
     return (
         <div className="max-w-6xl mx-auto px-4 py-16">
-            <div className="bg-white rounded-2xl shadow-lg overflow-hidden md:flex">
+            <div className="bg-white dark:bg-gray-700 rounded-2xl shadow-lg overflow-hidden md:flex">
 
                 {/* Left section: Task info */}
                 <div className="md:flex-1 p-8 space-y-6">
@@ -37,8 +41,15 @@ const TaskDetails = () => {
                         <p className="text-gray-600 whitespace-pre-line leading-relaxed">{task.description}</p>
                     </div>
 
-                    <div className="mt-6 italic text-sm text-gray-500">
-                        Posted by <span className="font-semibold text-indigo-600">{task.name}</span> ({task.email})
+                    <div className="mt-6 italic text-sm text-gray-500 flex items-center space-x-6">
+                        <div tabIndex={0} role="button" className="avatar btn btn-ghost btn-circle">
+                            <div className="w-10 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                                <img src={user.photoURL} alt="User" />
+                            </div>
+                        </div>
+                        <p>
+                            Posted by <span className="font-semibold text-indigo-600">{task.name}</span> ({task.email})
+                        </p>
                     </div>
                 </div>
 
