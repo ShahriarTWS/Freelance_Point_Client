@@ -22,13 +22,13 @@ const Home = () => {
     return (
         <div>
             <header className='relative'>
-                <div className='sticky top-0'>
+                <div className='sticky top-0 z-50'>
                     <Header></Header>
                 </div>
                 <Banner></Banner>
             </header>
             <main>
-                
+
                 <Outlet context={data}></Outlet>
             </main>
             <footer>
