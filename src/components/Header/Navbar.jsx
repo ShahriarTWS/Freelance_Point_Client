@@ -54,9 +54,10 @@ const Navbar = () => {
 
     const { theme, setTheme } = use(AuthContext);
 
-    const { user, logOut, setUser } = use(AuthContext);
-    const [dbuser,setDbUser]= useState([]);
-    // console.log(user?.photoURL);
+    const { user, logOut } = use(AuthContext);
+    // const [dbuser,setDbUser]= useState([]);
+    // const {photoURL,email,displayName}=user;
+    // console.log(photoURL);
 
     const handleLogout = () => {
         logOut();
@@ -66,19 +67,21 @@ const Navbar = () => {
         document.documentElement.setAttribute("data-theme", theme);
     }, [theme]);
 
-useEffect(() => {
-    if (!user) return;
+// useEffect(() => {
+//     if (!user) return;
 
-    fetch('http://localhost:3000/users')
-        .then(res => res.json())
-        .then(users => {
-            const matchedUser = users.find(u => u.email === user.email);
-            if (matchedUser) {
-                setDbUser(matchedUser);
-            }
-        })
-        .catch(err => console.error("Error fetching users:", err));
-}, [user]);
+//     fetch('http://localhost:3000/users')
+//         .then(res => res.json())
+//         .then(users => {
+//             const matchedUser = users.find(u => u.email === user.email);
+//             if (matchedUser) {
+//                 setDbUser(matchedUser);
+//             }
+//         })
+//         .catch(err => console.error("Error fetching users:", err));
+// }, [user]);
+
+// console.log(dbuser);
 
 
 
@@ -118,7 +121,7 @@ useEffect(() => {
                         <div className="dropdown dropdown-end">
                             <div tabIndex={0} role="button" className="avatar btn btn-ghost btn-circle">
                                 <div className="w-10 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                                    <img src={user.photoURL} alt="User" />
+                                    <img src={user?.photoURL} alt="User" />
                                 </div>
                             </div>
                             <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-200 rounded-box w-52">

@@ -251,7 +251,7 @@ const MyPostedTasks = () => {
     if (!user) return <div className="text-center py-10 text-lg text-red-600">Please log in to view your posted tasks.</div>;
 
     return (
-        <div className="max-w-7xl mx-auto px-4 py-8">
+        <div className="max-w-7xl mx-auto px-4 py-8 my-12">
             <h1 className="text-3xl font-bold mb-6 text-center md:text-left">My Posted Tasks</h1>
 
             {tasks.length === 0 ? (

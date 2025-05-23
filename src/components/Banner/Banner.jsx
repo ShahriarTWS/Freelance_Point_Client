@@ -8,33 +8,39 @@ import bannerImg from '../../assets/banner4.svg';
 import teamImg from '../../assets/team.svg';
 import workImg from '../../assets/getWork.svg'
 import { Typewriter } from 'react-simple-typewriter';
+import { useNavigate } from 'react-router';
 
 const Banner = () => {
+    const navigate = useNavigate();
     const slides = [
         {
             title: 'Find Freelancers for Any Task',
             description: 'Need help with small tasks? Connect with top freelancers or post your own project and hire the best talent — all within your budget and timeline.',
             buttonText: 'Post Your Task Now',
-            image: bannerImg
+            image: bannerImg,
+            path: '/task/addTask'
         },
         {
             title: 'Get Hired for What You Love',
             description: 'Create your profile and start bidding on tasks that match your skills. Thousands of clients are waiting for talents like you.',
             buttonText: 'Start Earning Today',
-            image: workImg
+            image: workImg,
+            path: '/task/browse-tasks'
         },
         {
             title: 'Trusted by Thousands Worldwide',
             description: 'Join a growing community that values security, transparency, and reliable payments. Your trust means everything.',
             buttonText: 'Join Our Community',
-            image: teamImg
+            image: teamImg,
+            path: '/auth/signup' // Or wherever you want
         }
     ];
+
 
     return (
         <div className='bg-gradient-to-b from-blue-400 to-indigo-500 h-[90vh]'>
             <Swiper
-                modules={[ Pagination, Navigation]}
+                modules={[Pagination, Navigation]}
                 autoplay={{ delay: 5000, disableOnInteraction: false }}
                 pagination={{ clickable: true }}
                 navigation
@@ -65,9 +71,9 @@ const Banner = () => {
                                     />
                                 }</p>
                                 <p className='text-center md:text-start'>
-                                    <button className="btn  btn-primary text-base font-medium my-6  py-4 px-6 md:py-6 md:px-12 hover:bg-neutral">
-                                    {slide.buttonText}
-                                </button>
+                                    <button onClick={()=>navigate(slide.path) } className="btn  btn-primary text-base font-medium my-6  py-4 px-6 md:py-6 md:px-12 hover:bg-neutral">
+                                        {slide.buttonText}
+                                    </button>
                                 </p>
                             </div>
                             <div className='flex-1 h-full flex md:justify-end items-center'>

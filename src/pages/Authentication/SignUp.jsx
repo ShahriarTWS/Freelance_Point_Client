@@ -116,7 +116,7 @@ const SignUp = () => {
     return (
         <div className='flex flex-col-reverse md:flex-row justify-center min-h-[80vh] items-center gap-6 my-4'>
             <title>FreelancerPoint || Register</title>
-            <div className="card bg-white w-full max-w-lg shrink-0 shadow-2xl">
+            <div className="card bg-base-200 w-full max-w-lg shrink-0 shadow-2xl">
                 <h2 className='font-semibold text-2xl py-5 text-center'>Register your account</h2>
                 <form onSubmit={handleRegister} className="card-body">
                     <fieldset className="fieldset">

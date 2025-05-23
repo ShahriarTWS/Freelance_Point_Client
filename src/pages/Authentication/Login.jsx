@@ -77,7 +77,7 @@ const Login = () => {
                 <img className='w-3/4 mx-auto' src={loginImg} alt="" />
             </div>
 
-            <div className="card bg-white w-full max-w-md shrink-0 shadow-2xl">
+            <div className="card bg-base-200 w-full max-w-md shrink-0 shadow-2xl">
                 <h2 className='font-semibold text-2xl py-5 text-center'>Login your account</h2>
                 <form onSubmit={handleLogin} className="card-body">
                     <fieldset className="fieldset">
