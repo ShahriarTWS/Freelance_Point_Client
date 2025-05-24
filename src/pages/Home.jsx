@@ -26,7 +26,7 @@ const Home = () => {
 
     return (
         <div>
-            <title>FreelancePoint || Home</title>
+            <title>FreelancerPoint || Home</title>
             <ScrollToTop></ScrollToTop>
             <header className='relative'>
                 <div className='sticky top-0 z-50'>

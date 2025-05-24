@@ -5,7 +5,7 @@ import ScrollToTop from '../../ScrollToTop/ScrollToTop';
 const PrivacyPolicy = () => {
     return (
         <div className="bg-gradient-to-b from-white to-slate-100 min-h-screen px-6 md:px-10 lg:px-32 py-16 text-gray-800">
-            <title>FreelancePoint || Privacy Policy</title>
+            <title>FreelancerPoint || Privacy Policy</title>
             <ScrollToTop></ScrollToTop>
             <div className="max-w-5xl mx-auto bg-white shadow-xl rounded-2xl p-10">
                 <h1 className="text-4xl font-bold text-indigo-600 mb-2 border-b border-indigo-200 pb-3">Privacy Policy</h1>
@@ -15,7 +15,7 @@ const PrivacyPolicy = () => {
                     {
                         title: '1. Introduction',
                         content:
-                            'At Freelance Point, we are committed to protecting your personal information and your right to privacy. This Privacy Policy outlines how we collect, use, and safeguard your data when you use our platform.',
+                            'At Freelancer Point, we are committed to protecting your personal information and your right to privacy. This Privacy Policy outlines how we collect, use, and safeguard your data when you use our platform.',
                     },
                     {
                         title: '2. Information We Collect',
@@ -66,7 +66,7 @@ const PrivacyPolicy = () => {
                     {
                         title: '8. Children\'s Privacy',
                         content:
-                            'Freelance Point is not intended for users under the age of 18. We do not knowingly collect data from minors.',
+                            'Freelancer Point is not intended for users under the age of 18. We do not knowingly collect data from minors.',
                     },
                     {
                         title: '9. Changes to This Policy',
@@ -78,8 +78,8 @@ const PrivacyPolicy = () => {
                         content: (
                             <p className="flex items-center gap-2">
                                 <FaEnvelope className="text-blue-600" />
-                                <a href="mailto:support@freelancepoint.com" className="text-blue-500 hover:underline">
-                                    support@freelancepoint.com
+                                <a href="mailto:support@freelancerpoint.com" className="text-blue-500 hover:underline">
+                                    support@freelancerpoint.com
                                 </a>
                             </p>
                         ),
@@ -92,7 +92,7 @@ const PrivacyPolicy = () => {
                 ))}
 
                 <p className="text-center text-sm text-gray-400 mt-12 pt-8 border-t border-gray-200">
-                    © {new Date().getFullYear()} Freelance Point. All rights reserved.
+                    © {new Date().getFullYear()} Freelancer Point. All rights reserved.
                 </p>
             </div>
         </div>

@@ -89,7 +89,7 @@ const MyPostedTasks = () => {
 
     return (
         <div className="max-w-7xl mx-auto px-4 py-8 my-12">
-            <title>FreelancePoint || My Posted Task</title>
+            <title>FreelancerPoint || My Posted Task</title>
             <ScrollToTop></ScrollToTop>
             <h1 className="text-3xl font-bold mb-6 text-center md:text-left">My Posted Tasks</h1>
 

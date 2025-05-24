@@ -31,7 +31,7 @@ const BrowseTasks = () => {
     return (
         <section className="max-w-7xl mx-auto px-4 py-12">
             <h1 className="text-4xl font-bold text-center  mb-12">Explore Available Tasks</h1>
-            <title>FreelancePoint || Browse Task</title>
+            <title>FreelancerPoint || Browse Task</title>
             <ScrollToTop></ScrollToTop>
             {tasks.length === 0 ? (
                 ''

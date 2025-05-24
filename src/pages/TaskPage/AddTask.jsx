@@ -71,7 +71,7 @@ const AddTask = () => {
 
     return (
         <div className="max-w-3xl mx-auto mt-10 p-8 my-12 bg-base-200 rounded-2xl shadow-lg">
-              <title>FreelancePoint || Add Task</title>
+              <title>FreelancerPoint || Add Task</title>
             <ScrollToTop></ScrollToTop>
             <h2 className="text-3xl font-bold text-primary mb-6 text-center">Add New Task</h2>
             <form onSubmit={handleAddTask} className="grid grid-cols-1 gap-5">

@@ -30,7 +30,7 @@ const SecurePayment = () => {
       <div className="w-10/12 mx-auto text-center">
         <h2 className="md:text-4xl text-3xl font-bold mb-6 text-blue-700 dark:text-white">Secure & Reliable Payments</h2>
         <p className="text-gray-600 dark:text-gray-300 mb-12 max-w-3xl mx-auto">
-          Your safety is our priority. FreelancePoint uses best-in-class technology to keep your payments secure, simple, and stress-free.
+          Your safety is our priority. FreelancerPoint uses best-in-class technology to keep your payments secure, simple, and stress-free.
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {paymentFeatures.map((item, index) => (

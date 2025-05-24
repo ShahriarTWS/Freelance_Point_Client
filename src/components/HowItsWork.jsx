@@ -28,7 +28,7 @@ const HowItWorks = () => {
     return (
         <div className=" py-16 px-6 md:px-20  ">
             <div className=" w-10/12 mx-auto text-center">
-                <h2 className="md:text-4xl text-3xl font-bold mb-6 ">How Freelance Point Works</h2>
+                <h2 className="md:text-4xl text-3xl font-bold mb-6 ">How Freelancer Point Works</h2>
                 <p className=" dark:text-gray-300 mb-12 max-w-3xl mx-auto">
                     Whether you're a freelancer or a client, getting started is easy. Just follow these simple steps to connect and collaborate.
                 </p>

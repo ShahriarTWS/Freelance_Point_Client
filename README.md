@@ -1,10 +1,10 @@
-# 🎯 FreelancePoint
+# 🎯 FreelancerPoint
 
 **Live URL:** []()
 
 ## 🚀 Project Purpose
 
-**FreelancerPoint** is a task-based freelance bidding platform where users can post tasks, browse available jobs, and place bids as freelancers. The goal is to connect clients and freelancers in a seamless, fast, and secure environment. With real-time bidding, role-based dashboards, and category-wise filtering, FreelancePoint streamlines the freelance experience for everyone.
+**FreelancerPoint** is a task-based freelance bidding platform where users can post tasks, browse available jobs, and place bids as freelancers. The goal is to connect clients and freelancers in a seamless, fast, and secure environment. With real-time bidding, role-based dashboards, and category-wise filtering, FreelancerPoint streamlines the freelance experience for everyone.
 
 
 

@@ -10,7 +10,7 @@ const Footer = () => {
                 <div>
                     <h3 className="text-xl font-semibold text-white mb-4">Contact Us</h3>
                     <p className="flex items-center gap-2"><FaMapMarkerAlt /> Rajshahi, Bangladesh</p>
-                    <p className="flex items-center gap-2 mt-2"><FaEnvelope /> info@freelancepoint.com</p>
+                    <p className="flex items-center gap-2 mt-2"><FaEnvelope /> info@freelancerpoint.com</p>
                     <p className="flex items-center gap-2 mt-2"><FaPhoneAlt /> +880 1611 683400</p>
                 </div>
 
@@ -20,7 +20,7 @@ const Footer = () => {
                     <ul className="space-y-2">
                         <li><Link to="/info/terms&condition" className="hover:underline">Terms & Conditions</Link></li>
                         <li><Link to="/info/privacy-policy" className="hover:underline">Privacy Policy</Link></li>
-                        <li><Link to="/info/about" className="hover:underline">About FreelancePoint</Link></li>
+                        <li><Link to="/info/about" className="hover:underline">About FreelancerPoint</Link></li>
                     </ul>
                 </div>
 
@@ -37,7 +37,7 @@ const Footer = () => {
 
             {/* Footer Bottom */}
             <div className="text-center text-gray-500 mt-10 border-t border-gray-600 pt-6 text-sm">
-                &copy; {new Date().getFullYear()} FreelancePoint. All rights reserved.
+                &copy; {new Date().getFullYear()} FreelancerPoint. All rights reserved.
             </div>
         </footer>
     );

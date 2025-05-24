@@ -80,7 +80,7 @@ const TaskDetails = () => {
 
     return (
         <div className="max-w-6xl mx-auto px-4 py-16 my-12">
-            <title>FreelancePoint || Task Details</title>
+            <title>FreelancerPoint || Task Details</title>
             <ScrollToTop></ScrollToTop>
             <p className="text-lg font-semibold text-green-700 mb-6">
                 You bid for {bidsCount} opportunities.

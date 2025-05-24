@@ -7,7 +7,7 @@ import ScrollToTop from '../ScrollToTop/ScrollToTop';
 const ErrorPage = () => {
     return (
         <div>
-            <title>FreelancePoint || Error 404</title>
+            <title>FreelancerPoint || Error 404</title>
             <ScrollToTop></ScrollToTop>
             <Lottie className='h-[80vh]' animationData={errorAnim}></Lottie>
             <Link to={'/'}>

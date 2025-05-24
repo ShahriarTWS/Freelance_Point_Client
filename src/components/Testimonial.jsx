@@ -6,7 +6,7 @@ const testimonials = [
         id: 1,
         name: "Emily Carter",
         role: "Client",
-        feedback: "FreelancePoint helped me find a great developer in under 24 hours. The bidding system is simple and transparent.",
+        feedback: "FreelancerPoint helped me find a great developer in under 24 hours. The bidding system is simple and transparent.",
         image: "https://i.pravatar.cc/100?img=32",
     },
     {
