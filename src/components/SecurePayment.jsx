@@ -26,7 +26,7 @@ const paymentFeatures = [
 
 const SecurePayment = () => {
   return (
-    <div className="bg-gray-50 dark:bg-gray-900 py-16 px-6 md:px-20 text-gray-800 dark:text-white">
+    <div className="bg-gray-50 dark:bg-gray-900 py-16  md:px-20 text-gray-800 dark:text-white">
       <div className="w-10/12 mx-auto text-center">
         <h2 className="md:text-4xl text-3xl font-bold mb-6 text-blue-700 dark:text-white">Secure & Reliable Payments</h2>
         <p className="text-gray-600 dark:text-gray-300 mb-12 max-w-3xl mx-auto">

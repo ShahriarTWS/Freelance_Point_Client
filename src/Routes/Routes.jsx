@@ -16,6 +16,7 @@ import InfoPage from "../pages/InfoPage/InfoPage";
 import TermsAndConditions from "../pages/InfoPage/TermsAndCondition";
 import PrivacyPolicy from "../pages/InfoPage/PrivacyPolicy";
 import About from "../pages/InfoPage/About";
+import Footer from "../components/Footer/Footer";
 
 export const router = createBrowserRouter([
     {

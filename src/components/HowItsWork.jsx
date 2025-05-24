@@ -26,7 +26,7 @@ const steps = [
 
 const HowItWorks = () => {
     return (
-        <div className=" py-16 px-6 md:px-20  ">
+        <div className=" py-16  md:px-20  ">
             <div className=" w-10/12 mx-auto text-center">
                 <h2 className="md:text-4xl text-3xl font-bold mb-6 ">How Freelancer Point Works</h2>
                 <p className=" dark:text-gray-300 mb-12 max-w-3xl mx-auto">

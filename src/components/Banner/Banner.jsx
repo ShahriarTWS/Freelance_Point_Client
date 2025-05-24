@@ -32,7 +32,7 @@ const Banner = () => {
             description: 'Join a growing community that values security, transparency, and reliable payments. Your trust means everything.',
             buttonText: 'Join Our Community',
             image: teamImg,
-            path: '/auth/signup' // Or wherever you want
+            path: '/info/about'
         }
     ];
 
@@ -40,8 +40,8 @@ const Banner = () => {
     return (
         <div className='bg-gradient-to-b from-blue-400 to-indigo-500 h-[90vh]'>
             <Swiper
-                modules={[Autoplay,Pagination, Navigation]}
-                
+                modules={[Autoplay, Pagination, Navigation]}
+
                 autoplay={{ delay: 15000, disableOnInteraction: false }}
                 pagination={{ clickable: true }}
                 navigation
@@ -72,7 +72,7 @@ const Banner = () => {
                                     />
                                 }</p>
                                 <p className='text-center md:text-start'>
-                                    <button onClick={()=>navigate(slide.path) } className="btn  btn-primary text-base font-medium my-6  py-4 px-6 md:py-6 md:px-12 hover:bg-neutral">
+                                    <button onClick={() => navigate(slide.path)} className="btn  btn-primary text-base font-medium my-6  py-4 px-6 md:py-6 md:px-12 hover:bg-neutral">
                                         {slide.buttonText}
                                     </button>
                                 </p>
