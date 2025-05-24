@@ -31,7 +31,7 @@ const UpdateTaskModal = ({ isOpen, onClose, taskId, user, onUpdateSuccess }) => 
             name: user.displayName
         };
 
-        console.log(updatedTask);
+        // console.log(updatedTask);
 
         fetch(`https://freelance-point-server.vercel.app/task/${taskId}`, {
             method: 'PUT',

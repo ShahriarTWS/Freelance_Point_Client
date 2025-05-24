@@ -126,7 +126,7 @@ const Navbar = () => {
                             {user ? '' : <>{conditionalLinks}</>}
                         </ul>
                     </div>
-                    <NavLink to="/" className="text-base-200 dark:text-white font-semibold text-sm md:text-3xl">FreelancerPoint</NavLink>
+                    <NavLink to="/" className="text-base-200 dark:text-white font-semibold text-xl md:text-3xl">FreelancerPoint</NavLink>
                 </div>
 
                 {/* Navbar Center */}

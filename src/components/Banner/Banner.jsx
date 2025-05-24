@@ -32,7 +32,7 @@ const Banner = () => {
             description: 'Join a growing community that values security, transparency, and reliable payments. Your trust means everything.',
             buttonText: 'Join Our Community',
             image: teamImg,
-            path: '/info/about'
+            path: '/auth/login'
         }
     ];
 

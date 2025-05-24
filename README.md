@@ -1,6 +1,6 @@
 # 🎯 FreelancerPoint
 
-**Live URL:** []()
+**Live URL:** [https://freelancer-point-app.web.app/](https://freelancer-point-app.web.app/)
 
 ## 🚀 Project Purpose
 

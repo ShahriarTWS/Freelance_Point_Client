@@ -31,7 +31,7 @@ const AddTask = () => {
             photoURL: user.photoURL,
         };
 
-        console.log('Submitted Task:', task);
+        // console.log('Submitted Task:', task);
         fetch('https://freelance-point-server.vercel.app/task', {
             method: 'POST',
             headers: {
@@ -70,7 +70,7 @@ const AddTask = () => {
     };
 
     return (
-        <div className="max-w-3xl mx-auto mt-10 p-8 my-12 bg-base-200 rounded-2xl shadow-lg">
+        <div className="w-11/12 md:max-w-3xl mx-auto  p-8 my-4 md:my-12 bg-base-200 rounded-2xl shadow-lg">
             <title>FreelancerPoint || Add Task</title>
             <ScrollToTop></ScrollToTop>
             <h2 className="text-3xl font-bold text-primary mb-6 text-center">Add New Task</h2>
