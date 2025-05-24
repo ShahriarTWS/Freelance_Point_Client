@@ -1,9 +1,12 @@
 import React from 'react';
 import { FaEnvelope } from 'react-icons/fa';
+import ScrollToTop from '../../ScrollToTop/ScrollToTop';
 
 const TermsAndConditions = () => {
     return (
         <div className="bg-gradient-to-b from-white to-slate-100 min-h-screen px-6 md:px-10 lg:px-32 py-16 text-gray-800">
+             <title>FreelancePoint || Terms & Conditions</title>
+            <ScrollToTop></ScrollToTop>
             <div className="max-w-5xl mx-auto bg-white shadow-xl rounded-2xl p-10">
                 <h1 className="text-4xl font-bold text-indigo-600 mb-2 border-b border-indigo-200 pb-3">Terms & Conditions</h1>
                 <p className="text-xs text-gray-400 mb-10">Last updated: May 23, 2025</p>

@@ -3,10 +3,13 @@ import { FaUsers, FaRocket, FaHandshake, FaShieldAlt } from 'react-icons/fa';
 import teamImage from '../../assets/team.svg';
 import workImage from '../../assets/getWork.svg';
 import ideaImage from '../../assets/banner4.svg';
+import ScrollToTop from '../../ScrollToTop/ScrollToTop';
 
 const AboutFreelancerPoint = () => {
     return (
         <div className="bg-slate-50 min-h-screen text-gray-800 px-6 md:px-10 lg:px-24 py-16">
+            <title>FreelancePoint || About</title>
+            <ScrollToTop></ScrollToTop>
             <div className="max-w-6xl mx-auto">
                 <h1 className="text-4xl md:text-5xl font-bold text-blue-700 text-center mb-4">About Freelance Point</h1>
                 <p className="text-center text-lg text-gray-600 mb-12">

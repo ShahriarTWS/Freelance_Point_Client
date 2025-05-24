@@ -2,10 +2,13 @@ import React from 'react';
 import errorAnim from '../assets/error.json'
 import Lottie from 'lottie-react';
 import { Link } from 'react-router';
+import ScrollToTop from '../ScrollToTop/ScrollToTop';
 
 const ErrorPage = () => {
     return (
         <div>
+            <title>FreelancePoint || Error 404</title>
+            <ScrollToTop></ScrollToTop>
             <Lottie className='h-[80vh]' animationData={errorAnim}></Lottie>
             <Link to={'/'}>
                 <p className='text-center'>

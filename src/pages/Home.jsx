@@ -6,6 +6,8 @@ import { Outlet } from 'react-router';
 import HowItWorks from '../components/HowItsWork';
 import SecurePayment from '../components/SecurePayment';
 import TopCategories from '../components/TopCategories';
+import Testimonial from '../components/Testimonial';
+import ScrollToTop from '../ScrollToTop/ScrollToTop';
 
 const Home = () => {
 
@@ -24,6 +26,8 @@ const Home = () => {
 
     return (
         <div>
+            <title>FreelancePoint || Home</title>
+            <ScrollToTop></ScrollToTop>
             <header className='relative'>
                 <div className='sticky top-0 z-50'>
                     <Header></Header>
@@ -39,6 +43,8 @@ const Home = () => {
                 <SecurePayment></SecurePayment>
 
                 <TopCategories></TopCategories>
+
+                <Testimonial></Testimonial>
             </main>
             <footer>
                 <Footer></Footer>

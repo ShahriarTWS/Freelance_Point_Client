@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext } from 'react';
 import { Link, useParams } from 'react-router';
 import { AuthContext } from '../../provider/AuthProvider';
 import Swal from 'sweetalert2';
+import ScrollToTop from '../../ScrollToTop/ScrollToTop';
 
 const TaskDetails = () => {
     const { id } = useParams();
@@ -79,6 +80,8 @@ const TaskDetails = () => {
 
     return (
         <div className="max-w-6xl mx-auto px-4 py-16 my-12">
+            <title>FreelancePoint || Task Details</title>
+            <ScrollToTop></ScrollToTop>
             <p className="text-lg font-semibold text-green-700 mb-6">
                 You bid for {bidsCount} opportunities.
             </p>
