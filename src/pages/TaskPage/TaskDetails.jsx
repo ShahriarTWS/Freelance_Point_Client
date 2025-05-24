@@ -11,11 +11,11 @@ const TaskDetails = () => {
     const { user } = useContext(AuthContext);
 
     useEffect(() => {
-        fetch(`http://localhost:3000/task/${id}`)
+        fetch(`https://freelance-point-server.vercel.app/task/${id}`)
             .then(res => res.json())
             .then(data => setTask(data));
 
-        fetch(`http://localhost:3000/bids/count/${id}`)
+        fetch(`https://freelance-point-server.vercel.app/bids/count/${id}`)
             .then(res => res.json())
             .then(data => setBidsCount(data.count));
     }, [id]);
@@ -33,7 +33,7 @@ const TaskDetails = () => {
             return;
         }
 
-        fetch('http://localhost:3000/bids', {
+        fetch('https://freelance-point-server.vercel.app/bids', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({

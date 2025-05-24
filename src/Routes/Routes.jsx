@@ -21,7 +21,7 @@ export const router = createBrowserRouter([
     {
         path: '/',
         element: <Home></Home>,
-        loader: () => fetch('http://localhost:3000/task'),
+        loader: () => fetch('https://freelance-point-server.vercel.app/task'),
         hydrateFallbackElement: <Loading></Loading>,
         children: [
             {
@@ -84,7 +84,7 @@ export const router = createBrowserRouter([
                 element: <TermsAndConditions></TermsAndConditions>
             },
             {
-                path:'/info/privacy-policy',
+                path: '/info/privacy-policy',
                 element: <PrivacyPolicy></PrivacyPolicy>
             },
             {

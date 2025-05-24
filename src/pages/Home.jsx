@@ -14,7 +14,7 @@ const Home = () => {
     const [data, setData] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:3000/task')
+        fetch('https://freelance-point-server.vercel.app/task')
             .then(res => res.json())
             .then(fetchedData => {
                 setData(fetchedData)

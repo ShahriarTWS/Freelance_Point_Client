@@ -16,11 +16,11 @@ const MyPostedTasks = () => {
     const refreshTasks = async () => {
         if (user?.email) {
             try {
-                const taskRes = await fetch(`http://localhost:3000/tasks/mytasks?email=${user.email}`);
+                const taskRes = await fetch(`https://freelance-point-server.vercel.app/tasks/mytasks?email=${user.email}`);
                 const tasks = await taskRes.json();
 
                 const tasksWithBidCounts = await Promise.all(tasks.map(async (task) => {
-                    const countRes = await fetch(`http://localhost:3000/bids/count/${task._id}`);
+                    const countRes = await fetch(`https://freelance-point-server.vercel.app/bids/count/${task._id}`);
                     const { count } = await countRes.json();
                     return { ...task, bidCount: count };
                 }));
@@ -47,7 +47,7 @@ const MyPostedTasks = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:3000/task/${id}`, {
+                fetch(`https://freelance-point-server.vercel.app/task/${id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())

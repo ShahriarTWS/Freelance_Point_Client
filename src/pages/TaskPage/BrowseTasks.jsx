@@ -12,7 +12,7 @@ const BrowseTasks = () => {
 
     useEffect(() => {
         setLoading(true);
-        fetch('http://localhost:3000/task')
+        fetch('https://freelance-point-server.vercel.app/task')
             .then(res => res.json())
             .then(data => {
                 setTasks(data);

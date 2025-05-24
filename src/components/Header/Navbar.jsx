@@ -90,7 +90,7 @@ const Navbar = () => {
     // useEffect(() => {
     //     if (!user) return;
 
-    //     fetch('http://localhost:3000/users')
+    //     fetch('https://freelance-point-server.vercel.app/users')
     //         .then(res => res.json())
     //         .then(users => {
     //             const matchedUser = users.find(u => u.email === user.email);

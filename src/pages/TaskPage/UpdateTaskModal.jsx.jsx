@@ -7,7 +7,7 @@ const UpdateTaskModal = ({ isOpen, onClose, taskId, user, onUpdateSuccess }) => 
     useEffect(() => {
         if (taskId && isOpen) {
             setTask(null); // reset previous task data
-            fetch(`http://localhost:3000/task/${taskId}`)
+            fetch(`https://freelance-point-server.vercel.app/task/${taskId}`)
                 .then(res => res.json())
                 .then(data => setTask(data))
                 .catch(err => {
@@ -33,7 +33,7 @@ const UpdateTaskModal = ({ isOpen, onClose, taskId, user, onUpdateSuccess }) => 
 
         console.log(updatedTask);
 
-        fetch(`http://localhost:3000/task/${taskId}`, {
+        fetch(`https://freelance-point-server.vercel.app/task/${taskId}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

@@ -38,7 +38,7 @@ const SignUp = () => {
                             confirmButtonColor: '#3085d6',
                         });
 
-                        fetch('http://localhost:3000/users', {
+                        fetch('https://freelance-point-server.vercel.app/users', {
                             method: 'POST',
                             headers: {
                                 'content-type': 'application/json'
@@ -79,7 +79,7 @@ const SignUp = () => {
                     email: user.email
                 };
 
-                fetch('http://localhost:3000/users', {
+                fetch('https://freelance-point-server.vercel.app/users', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
